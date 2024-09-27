@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML API - Salary Prediction</title>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    }
+
+    .login {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .login h1 {
+      font-family: 'Pacifico', cursive;
+      margin-bottom: 30px;
+      font-size: 36px;
+      color: #333;
+    }
+
+    .login form input[type="text"] {
+      font-family: 'Hind', sans-serif;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .login form button {
+      font-family: 'Open Sans Condensed', sans-serif;
+      width: 100%;
+      padding: 15px;
+      background-color: #3498db;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login form button:hover {
+      background-color: #2980b9;
+    }
+
+    .login p {
+      font-family: 'Hind', sans-serif;
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Hind', sans-serif;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Salary Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input type="text" name="experience" placeholder="Years of Experience" required="required" />
+        <input type="text" name="test_score" placeholder="Test Score (Out of 100)" required="required" />
+		<input type="text" name="interview_score" placeholder="Interview Score (Out of 10)" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Salary</button>
+    </form>
+
+   <br>
+   <br>
+   <p>{{ prediction_text }}</p>
+
+ </div>
+
+ <footer>
+   Made with ❤️ by Radouane El Mahfoud
+ </footer>
+
+</body>
+</html>
